@@ -31,7 +31,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   List images = [
     "assets/images/Weights2.png",
-    "assets/images/Cardio.png",
+    "assets/images/Cycling.png",
     "assets/images/Stretching.png",
     "assets/images/Yoga.png"
   ];
@@ -256,17 +256,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                         children: [
                                           Text(
                                             "Muscle Training",
-                                            style: GoogleFonts.festive(
+                                            style: GoogleFonts.arimo(
                                                 fontSize: 20.0, fontWeight: FontWeight.bold),
                                           ),
                                           Text(
                                             "Amateur Level",
-                                            style: GoogleFonts.alexBrush(
+                                            style: GoogleFonts.arimo(
                                                 fontSize: 17.0, fontWeight: FontWeight.w500),
                                           ),
                                           Text(
                                             "25 items",
-                                            style: GoogleFonts.alexBrush(fontSize: 14.0),
+                                            style: GoogleFonts.arimo(fontSize: 14.0),
                                           )
                                         ],
                                       ),
