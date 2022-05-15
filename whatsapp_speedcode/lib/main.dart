@@ -150,24 +150,29 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> with TickerProvider
       body: TabBarView(
         controller: _tabController,
         children: <Widget>[
-          Center(
+          const Center(
             child: Text("It's cloudy here"),
           ),
           chatsSection(),
-          Center(
+          const Center(
             child: Text("It's sunny here"),
           ),
-          Center(
+          const Center(
             child: Text("It's sunny here"),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: const Color(0xFF075E54),
+        child: const Icon(Icons.chat),
       ),
     );
   }
 
   Widget chatsSection() {
     return ListView(
-      shrinkWrap: true,
+      // shrinkWrap: true,
       itemExtent: 90.0,
       children: contentData,
     );
