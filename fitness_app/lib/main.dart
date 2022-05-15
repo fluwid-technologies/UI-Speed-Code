@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
+import 'package:fitness_app/DataContainer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,7 +19,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        fontFamily: GoogleFonts.montserrat().fontFamily,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -35,23 +35,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List images = [
-    "assets/images/Weights2.png",
-    "assets/images/Cycling.png",
-    "assets/images/Yoga.png"
-  ];
-  List names = ["Weights", "Cardio", "Yoga"];
-  List colorsCont = [0xff93b7d8, 0xffd7b6da, 0xff8d8dca];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         elevation: 0.0,
         title: Text(
-          "Hi Prakhar",
+          "Hi Coders",
           style: GoogleFonts.montserrat(
               color: const Color(0xff121212), fontWeight: FontWeight.w500, fontSize: 20),
         ),
@@ -61,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.all(8.0),
             child: Stack(
               alignment: Alignment.center,
-              children: const [
+              children: [
                 CircleAvatar(
                   backgroundColor: Color(0xfffd7b45),
                   radius: 22,
@@ -69,16 +60,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 CircleAvatar(
                   radius: 18,
                   foregroundImage: AssetImage("assets/images/Drive.png"),
-                ),
+                )
               ],
             ),
-          ),
+          )
         ],
       ),
       body: Container(
         color: Colors.grey.shade100,
         child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
+          physics: BouncingScrollPhysics(),
           child: Column(
             children: [
               SizedBox(
@@ -127,17 +118,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             height: 200,
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: const Color(0xFFfd7b45),
-                              borderRadius: BorderRadius.circular(32.0),
-                              /* boxShadow: const [
-                                  BoxShadow(
-                                    color: Colors.grey,
-                                    blurRadius: 4.0,
-                                    spreadRadius: 2.0,
-                                    offset: Offset(3.0, 3.0), // shadow direction: bottom right
-                                  )*/
-                              // ]
-                            ),
+                                color: const Color(0xFFfd7b45),
+                                borderRadius: BorderRadius.circular(32.0)),
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(30, 25, 0, 25),
                               child: Column(
@@ -176,8 +158,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                         decoration: BoxDecoration(
                                             color: Colors.white,
                                             borderRadius: BorderRadius.circular(20.0)),
-                                        child:
-                                            const Icon(Icons.play_arrow, color: Color(0xFFFF5200)),
+                                        child: const Icon(
+                                          Icons.play_arrow,
+                                          color: Color(0xFFFF5200),
+                                        ),
                                       ),
                                       const SizedBox(
                                         width: 10.0,
@@ -195,7 +179,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ),
                           ),
-                        ),
+                        )
                       ],
                     ),
                     Positioned(
@@ -253,16 +237,15 @@ class _MyHomePageState extends State<MyHomePage> {
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
                       physics: const BouncingScrollPhysics(),
-                      itemCount: names.length,
+                      itemCount: fitnessData.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Padding(
                           padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
                           child: Container(
                             height: 200,
                             decoration: BoxDecoration(
-                              color: Color(colorsCont[index]),
-                              borderRadius: BorderRadius.circular(32.0),
-                            ),
+                                borderRadius: BorderRadius.circular(20.0),
+                                color: Color(fitnessData[index]['color'])),
                             child: Stack(
                               children: [
                                 Padding(
@@ -272,29 +255,27 @@ class _MyHomePageState extends State<MyHomePage> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        names[index],
+                                        fitnessData[index]['name'],
                                         style: const TextStyle(
                                             color: Colors.white,
                                             fontSize: 28.0,
                                             fontWeight: FontWeight.bold),
                                       ),
-                                      const Text(
-                                        "Amateur Level",
-                                        style: TextStyle(
+                                      Text(
+                                        "${fitnessData[index]['level']} Level",
+                                        style: const TextStyle(
                                             fontSize: 20.0, fontWeight: FontWeight.bold),
                                       ),
                                       Container(
-                                        padding: const EdgeInsets.all(8),
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(12.0),
-                                        ),
-                                        child: const Text(
-                                          "25 Items",
-                                          style: TextStyle(
-                                              fontSize: 14.0, fontWeight: FontWeight.bold),
-                                        ),
-                                      )
+                                          padding: const EdgeInsets.all(8.0),
+                                          decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.circular(12.0)),
+                                          child: Text(
+                                            fitnessData[index]['Items'],
+                                            style: const TextStyle(
+                                                fontSize: 14.0, fontWeight: FontWeight.bold),
+                                          ))
                                     ],
                                   ),
                                 ),
@@ -310,11 +291,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                       width: 150,
                                       decoration: BoxDecoration(
                                           image: DecorationImage(
-                                              fit: BoxFit.contain,
-                                              image: AssetImage(images[index]))),
+                                              image: AssetImage(fitnessData[index]['img']))),
                                     ),
                                   ),
-                                ),
+                                )
                               ],
                             ),
                           ),
