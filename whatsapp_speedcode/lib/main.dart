@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(const MyApp());
 
@@ -9,8 +10,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: _title,
+      theme: ThemeData(
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        fontFamily: GoogleFonts.poppins().fontFamily,
+        canvasColor: Colors.white,
+      ),
       home: MyStatefulWidget(),
     );
   }
@@ -90,8 +97,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> with TickerProvider
       appBar: AppBar(
         backgroundColor: Color(0xFF075E54),
         title: const Text(
-          'Whatsapp',
-          style: TextStyle(fontSize: 25.0),
+          'WhatsApp',
+          style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold),
         ),
         actions: const [
           Padding(
@@ -122,7 +129,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> with TickerProvider
               width: 30,
               height: 50,
               alignment: Alignment.center,
-              child: Icon(
+              child: const Icon(
                 Icons.camera_alt,
               ),
             ),
@@ -132,18 +139,18 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> with TickerProvider
                 alignment: Alignment.center,
                 child: const Text(
                   "CHATS",
-                  style: TextStyle(fontSize: 15.0),
+                  style: TextStyle(fontSize: 15.0,fontWeight: FontWeight.w600),
                 )),
             Container(
                 width: yourWidth,
                 height: 50,
                 alignment: Alignment.center,
-                child: const Text("STATUS", style: TextStyle(fontSize: 15.0))),
+                child: const Text("STATUS", style: TextStyle(fontSize: 15.0,fontWeight: FontWeight.w600))),
             Container(
                 width: yourWidth,
                 height: 50,
                 alignment: Alignment.center,
-                child: const Text("CALL", style: TextStyle(fontSize: 15.0)))
+                child: const Text("CALL", style: TextStyle(fontSize: 15.0,fontWeight: FontWeight.w600)))
           ],
         ),
       ),
@@ -172,6 +179,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> with TickerProvider
 
   Widget chatsSection() {
     return ListView(
+      physics: const BouncingScrollPhysics(),
       // shrinkWrap: true,
       itemExtent: 90.0,
       children: contentData,
@@ -209,7 +217,7 @@ class ScreenContent extends StatelessWidget {
               name!,
               style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800),
             ),
-            subtitle: Text(message!),
+            subtitle: Text(message!,maxLines: 1,),
             trailing: Column(
               children: [
                 Container(
@@ -217,7 +225,7 @@ class ScreenContent extends StatelessWidget {
                     child: Text(
                       time!,
                       style: TextStyle(
-                          fontSize: 14, fontWeight: FontWeight.w600, color: Colors.grey.shade600),
+                          fontSize: 12, fontWeight: FontWeight.w500, color: Colors.grey.shade700),
                     )),
               ],
             ),
