@@ -75,13 +75,13 @@ class _MyHomePageState extends State<MyHomePage> {
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 const SizedBox(
                   height: 20,
                 ),
-                Text("Choose your Avatar",
+                Text("Choose A Avatar For You",
                     style: GoogleFonts.poppins(
                       fontSize: 40,
                       color: Colors.white,
@@ -93,11 +93,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 GridView.builder(
                     itemCount: avatar.length,
                     scrollDirection: Axis.vertical,
-                    padding: const EdgeInsets.all(16),
                     shrinkWrap: true,
                     physics: const BouncingScrollPhysics(),
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2, mainAxisSpacing: 30, crossAxisSpacing: 20),
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 30,
+                    ),
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
@@ -106,22 +108,17 @@ class _MyHomePageState extends State<MyHomePage> {
                           });
                         },
                         child: Container(
+                          padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            color: selected == index ? Colors.amber : Colors.white,
+                              color: selected == index ? Colors.amber : Colors.white,
+                              borderRadius: BorderRadius.circular(12)),
+                          child: ClipRRect(
                             borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Expanded(
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Hero(
-                                  tag: "demotag",
-                                  child: Image.network(
-                                    avatar[index]["imgUrl"],
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
+                            child: Hero(
+                              tag: "demotag$index",
+                              child: Image.network(
+                                avatar[index]["imgUrl"],
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
@@ -143,6 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     MaterialPageRoute(
                         builder: (_) => AvatarSelected(
                               url: avatar[selected!]["imgUrl"],
+                          index: selected!,
                             )));
               },
         label: const Text(

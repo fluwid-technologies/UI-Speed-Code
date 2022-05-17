@@ -98,7 +98,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> with TickerProvider
         backgroundColor: Color(0xFF075E54),
         title: const Text(
           'WhatsApp',
-          style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
         ),
         actions: const [
           Padding(
@@ -139,18 +139,20 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> with TickerProvider
                 alignment: Alignment.center,
                 child: const Text(
                   "CHATS",
-                  style: TextStyle(fontSize: 15.0,fontWeight: FontWeight.w600),
+                  style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w600),
                 )),
             Container(
                 width: yourWidth,
                 height: 50,
                 alignment: Alignment.center,
-                child: const Text("STATUS", style: TextStyle(fontSize: 15.0,fontWeight: FontWeight.w600))),
+                child: const Text("STATUS",
+                    style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w600))),
             Container(
                 width: yourWidth,
                 height: 50,
                 alignment: Alignment.center,
-                child: const Text("CALL", style: TextStyle(fontSize: 15.0,fontWeight: FontWeight.w600)))
+                child: const Text("CALL",
+                    style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w600)))
           ],
         ),
       ),
@@ -217,7 +219,10 @@ class ScreenContent extends StatelessWidget {
               name!,
               style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800),
             ),
-            subtitle: Text(message!,maxLines: 1,),
+            subtitle: Text(
+              message!,
+              maxLines: 1,
+            ),
             trailing: Column(
               children: [
                 Container(
