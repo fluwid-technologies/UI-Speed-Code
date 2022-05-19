@@ -2,6 +2,7 @@ import 'package:choose_avatar/avatar_selected.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:animate_do/animate_do.dart';
 
 void main() {
   runApp(const MyApp());
@@ -81,12 +82,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 const SizedBox(
                   height: 20,
                 ),
-                Text("Choose A Avatar For You",
-                    style: GoogleFonts.poppins(
-                      fontSize: 40,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    )),
+                Text(
+                  "Choose A Avatar For You",
+                  style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.bold, fontSize: 40, color: Colors.white),
+                ),
                 const SizedBox(
                   height: 25,
                 ),
@@ -100,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       mainAxisSpacing: 20,
                       crossAxisSpacing: 30,
                     ),
-                    itemBuilder: (context, index) {
+                    itemBuilder: (cotext, index) {
                       return GestureDetector(
                         onTap: () {
                           setState(() {
@@ -110,21 +110,21 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Container(
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                              color: selected == index ? Colors.amber : Colors.white,
-                              borderRadius: BorderRadius.circular(12)),
+                            color: selected == index ? Colors.amber : Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(12),
                             child: Hero(
-                              tag: "demotag$index",
-                              child: Image.network(
-                                avatar[index]["imgUrl"],
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                                tag: "demotag$index",
+                                child: Image.network(
+                                  avatar[index]["imgUrl"],
+                                  fit: BoxFit.cover,
+                                )),
                           ),
                         ),
                       );
-                    })
+                    }),
               ],
             ),
           ),
@@ -140,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     MaterialPageRoute(
                         builder: (_) => AvatarSelected(
                               url: avatar[selected!]["imgUrl"],
-                          index: selected!,
+                              index: selected!,
                             )));
               },
         label: const Text(
