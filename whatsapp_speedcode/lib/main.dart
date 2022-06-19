@@ -51,7 +51,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> with TickerProvider
       appBar: AppBar(
         backgroundColor: Color(0xFF075E54),
         title: const Text(
-          'Whatsapp',
+          'WhatsApp',
           style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
         ),
         actions: const [

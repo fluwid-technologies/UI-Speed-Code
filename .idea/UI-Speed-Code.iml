@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/netflix_ui_speedcode/build" />
+      <excludeFolder url="file://$MODULE_DIR$/netflix_ui_speedcode/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/netflix_ui_speedcode/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/spotify_ui/build" />
+      <excludeFolder url="file://$MODULE_DIR$/spotify_ui/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/spotify_ui/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/fitness_app/build" />
+      <excludeFolder url="file://$MODULE_DIR$/fitness_app/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/fitness_app/.pub" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
